@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cordova Weather App: API</title>
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://raw.githubusercontent.com/rdipardo/cordova-weather-app/master/www/favicon.ico">
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <script>
+        function replaceIcon () {
+            document.querySelector('.fa.fa-github').style.fontSize = 'initial';
+            document.querySelector('.fa.fa-github').style.lineHeight = "0"
+            document.querySelector('.fa.fa-github').style.fontWeight = 500;
+            document.querySelector('.fa.fa-github').innerText = 'View Source';
+        }
+    </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" onerror="replaceIcon()"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+</head>
+
+<body>
+
+<div id="main">
+    <div class="gh-meta">
+    <p><b>Version</b> 1.2.0</p>
+    <p><a href="https://github.com/rdipardo/cordova-weather-app/" title="View project on Github"><span class="fa fa-github" aria-hidden="true"></span></a></p>
+    </div>
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Cordova Weather App<a name="content-start"></a></h1>
+<p><a href="https://circleci.com/gh/rdipardo/cordova-weather-app"><img src="https://circleci.com/gh/rdipardo/cordova-weather-app.svg?style=svg" alt="CircleCI"></a>  <a href="https://app-automate.browserstack.com/dashboard/v2/builds/401dd049668eb908545b1c6ff845abecbfb33538"><img src="https://app-automate.browserstack.com/badge.svg?badge_key=ZjZJTTlKZCtrOEUweXBqTlR2THpDNkhZTXc4R3phdW9IbnRoOVA4WkpYOD0tLU00VjFSZEIxOGRKTXB6alR0TURkK1E9PQ==--4c44450eca889dc5b5905421dcf98e2197a07690" alt="BrowserStack Build Status"></a></p>
+<p>Hybrid Android app using <a href="https://www.npmjs.com/package/cordova-android">cordova-android</a> for native geolocation, with a WebView interface built on <a href="https://jquerymobile.com">jQuery Mobile</a>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/.github/img/Screenshot_20200827-231813_WeatherWizard.jpg" alt="WeatherWizard-daily-screen"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/.github/img/Screenshot_20200827-231900_WeatherWizard.jpg" alt="WeatherWizard-gps-search"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/.github/img/Screenshot_20200827-231917_WeatherWizard.jpg" alt="WeatherWizard-long-range"></td>
+</tr>
+</tbody>
+</table>
+<h2>Build Requirements</h2>
+<ul>
+<li><a href="https://adoptopenjdk.net">JDK 8</a> – <em>no later versions!</em></li>
+<li><a href="https://gradle.org/install">gradle</a> – any recent version (6.x is recommended)</li>
+<li><a href="https://nodejs.org/en/download">node</a> – any LTS version (12.x is recommended)</li>
+<li>the Android SDK – API levels 22 to 29 <a href="https://github.com/apache/cordova-android/pull/915/">are supported</a>. You can install one via the SDK Manager bundled with <a href="https://developer.android.com/studio/install">Android Studio</a></li>
+<li>(<em>optional</em>) an Android emulator, obtainable via the same SDK Manager</li>
+</ul>
+<p>Skip the last item if you're comfortable with using a personal device in Developer Mode. See <a href="https://android.gadgethacks.com/how-to/unlock-developer-options-your-pixel-android-9-0-pie-0183349/">these instructions</a> on how to do that.</p>
+<h3>Configuring your build environment</h3>
+<p><strong>Note.</strong>
+This app depends on the <a href="https://openweathermap.org/api">OpenWeather API</a> to fetch current weather data. <em>No other API will work!</em></p>
+<ul>
+<li>
+<p>Make sure to <a href="https://openweathermap.org/guide#how">create an OpenWeather account</a> and obtain <a href="https://openweathermap.org/appid">your API token</a></p>
+</li>
+<li>
+<p>Verify that <code>node</code>, <code>npm</code> and <code>gradle</code> are on your system's <code>PATH</code>. The commands
+<code>node -v</code>, <code>npm -v</code> and <code>gradle -v</code> should print out an appropriate version string</p>
+</li>
+<li>
+<p>Create a <code>JAVA_HOME</code> environment variable pointing to your JDK installation</p>
+</li>
+</ul>
+<p><strong>Note.</strong> The <code>JAVA_HOME</code> path <em>should not include</em> the <code>bin</code> folder!</p>
+<h5>Windows</h5>
+<ul>
+<li>From the Control Panel, select <strong>System and Security</strong> &gt; <strong>System</strong> &gt; <strong>Advanced system settings</strong></li>
+<li>Click the <strong>Environment Variables</strong> button</li>
+<li>In the <strong>System variables</strong> dialog box, click <strong>New...</strong></li>
+<li>In the <strong>Variable name</strong> text field, type <code>JAVA_HOME</code></li>
+<li>In the <strong>Variable value</strong> text field, type the full path to your installed JDK, e.g. <code>C:\full\path\to\your\JDK</code></li>
+<li>Click <em>OK</em></li>
+</ul>
+<h5>Mac or Linux</h5>
+<p>Add this line to your <code>~/.profile</code>, <code>~/.zshrc</code> or <code>~/.bashrc</code>:</p>
+<pre><code>export JAVA_HOME=/full/path/to/your/JDK
+</code></pre>
+<ul>
+<li>Make a note of where the Android SDK libraries have been installed and locate the directory on your file system</li>
+<li>Copy and paste the full path, e.g.</li>
+</ul>
+<h5>Windows</h5>
+<pre><code>C:\full\path\to\your\Android\Sdk
+</code></pre>
+<h5>Mac or Linux</h5>
+<pre><code>/full/path/to/your/Android/Sdk
+</code></pre>
+<ul>
+<li>Following the same steps as above, create an <code>ANDROID_SDK_ROOT</code> environment variable pointing to the SDK path (<strong>preferred</strong>)</li>
+</ul>
+<blockquote>
+<p>Alternatively, you may create an <code>ANDROID_HOME</code> environment variable pointing to the SDK path (<strong>deprecated but still acceptable</strong>)</p>
+</blockquote>
+<h3>Configuring <code>gradle</code></h3>
+<p>Leaving all the default options in place should work fine.</p>
+<p>If you want to target a specific Android API level, or tweak the compilation process, read Cordova's documentation on <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/#configuring-gradle">passing build options</a> to the gradle wrapper.</p>
+<h2>Building</h2>
+<p>Find <a href="https://openweathermap.org/appid">your API token</a> and save it to <code>wwww/config.js</code> like so:</p>
+<pre class="prettyprint source lang-javascript"><code>const ENV = {
+    'OPENWEATHER_APPID': '&lt;your_OpenWeather_API_token>'
+}
+</code></pre>
+<p>Validate your setup with <code>npm run check</code>, then run:</p>
+<pre><code>npm install
+npm run build
+</code></pre>
+<h2>Testing</h2>
+<ul>
+<li>Sign up for <a href="https://www.browserstack.com">BrowserStack</a></li>
+<li>Open your terminal/cmd.exe/PowerShell prompt and set environment variables for your username and access key, e.g.</li>
+</ul>
+<h5>Windows (cmd.exe)</h5>
+<pre><code>set &quot;BROWSERSTACK_USERNAME=your_username&quot;
+set &quot;BROWSERSTACK_ACCESS_KEY=your_access_key&quot;
+</code></pre>
+<h5>Windows (PowerShell)</h5>
+<pre><code>$env:BROWSERSTACK_USERNAME=&quot;your_username&quot;
+$env:BROWSERSTACK_ACCESS_KEY=&quot;your_access_key&quot;
+</code></pre>
+<h5>Mac or Linux</h5>
+<pre><code>export BROWSERSTACK_USERNAME=&quot;your_username&quot;
+export BROWSERSTACK_ACCESS_KEY=&quot;your_access_key&quot;
+</code></pre>
+<ul>
+<li>Run the automation tests: <code>npm run test</code></li>
+</ul>
+<h2>Running locally</h2>
+<h5>Using an emulator</h5>
+<p>Make sure the emulator is fired up ahead of time (it will take a while!), then run:</p>
+<pre><code>npm run emulator
+</code></pre>
+<h5>Using a device</h5>
+<p>Be sure to <a href="https://www.recovery-android.com/enable-usb-debugging-on-android.html">enable USB debugging</a> on the device (requires <a href="https://android.gadgethacks.com/how-to/unlock-developer-options-your-pixel-android-9-0-pie-0183349/">Developer Mode</a>). Connect it via USB cable to your PC, then run:</p>
+<pre><code>npm run device
+</code></pre>
+<h2>Acknowledgements</h2>
+<p>Weather icons copyright (c) <a href="https://github.com/erikflowers/weather-icons">Erik Flowers</a>.</p>
+<p>Weather icons font licensed under the terms of the <a href="http://scripts.sil.org/OFL">SIL OFL 1.1</a>.</p>
+<p>Weather icons source code licensed under the terms of the <a href="http://opensource.org/licenses/mit-license.html">MIT License</a>.</p>
+<p>Visit the <a href="https://github.com/erikflowers/weather-icons">Weather Icons</a> repository for complete licensing and attribution details.</p>
+<p>App icon source image copyright (c) <a href="https://www.iconfinder.com/icons/216532/stormy_weather_icon">Stephen Hutchings</a> and distributed under a <a href="https://creativecommons.org/licenses/by-sa/4.0">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+<p>Splash screen and background <a href="https://www.pexels.com/photo/assorted-hot-air-balloons-photo-during-sunset-670061">source image</a> distributed under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0">Creative Commons Zero license (CC0)</a>.</p>
+<h2>License</h2>
+<p>Copyright (c) 2019-2020 Robert Di Pardo</p>
+<p>Distributed under the <a href="https://opensource.org/licenses/Apache-2.0">Apache License Version 2.0</a>.</p>
+<p><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="CC BY-SA 4.0"></p>
+<p>Portions of this work are licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+<!-- screens --></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Cordova Weather App</a></h2><h3>Namespaces</h3><ul><li><a href="AppData.html">AppData</a></li><li><a href="AppView.html">AppView</a></li><li><a href="ForecastController.html">ForecastController</a></li><li><a href="ForecastWorker.html">ForecastWorker</a></li><li><a href="Handlers.html">Handlers</a></li><li><a href="LocationController.html">LocationController</a></li><li><a href="PreferenceController.html">PreferenceController</a></li></ul><h3>Classes</h3><ul><li><a href="APIRequest.html">APIRequest</a></li><li><a href="Forecast.html">Forecast</a></li><li><a href="Location.html">Location</a></li><li><a href="Preference.html">Preference</a></li><li><a href="WeatherReading.html">WeatherReading</a></li></ul><h3>Global</h3><ul><li><a href="global.html#fetchWeatherIcon">fetchWeatherIcon</a></li><li><a href="global.html#getNextDate">getNextDate</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on October 26, 2020
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+<script>
+    var home = document.querySelector('a[href="index.html"]');
+    home.innerHTML = "Readme";
+    home.href = "index.html#content-start";
+
+    var target = window.location.href.split('/').reverse()[0]
+    if (target) {
+      var activePage = document.querySelector('nav ul li a[href="' + target + '"]');
+      if (activePage) {
+          activePage.style.fontWeight = '900';
+      }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cordova Weather App: API</title>
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://raw.githubusercontent.com/rdipardo/cordova-weather-app/master/www/favicon.ico">
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <script>
+        function replaceIcon () {
+            document.querySelector('.fa.fa-github').style.fontSize = 'initial';
+            document.querySelector('.fa.fa-github').style.lineHeight = "0"
+            document.querySelector('.fa.fa-github').style.fontWeight = 500;
+            document.querySelector('.fa.fa-github').innerText = 'View Source';
+        }
+    </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" onerror="replaceIcon()"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+</head>
+
+<body>
+
+<div id="main">
+    <div class="gh-meta">
+    <p><b>Version</b> 1.2.0</p>
+    <p><a href="https://github.com/rdipardo/cordova-weather-app/" title="View project on Github"><span class="fa fa-github" aria-hidden="true"></span></a></p>
+    </div>
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Copyright 2019-2020 rdipardo &lt;dipardo.r@gmail.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Provides a CRUD interface to the Forecast table
+ * @namespace ForecastController
+ */
+const ForecastController = (function () {
+
+    return {
+
+        /**
+         * Adds a {@link Forecast} record to the database
+         * @param {Forecast} values - The field values of a new {@link Forecast} record
+         * @param {number} values.locationID - The row id of a saved {@link Location} record
+         * @param {JSON} values.data - Weather data
+         * @param {Date} values.lastUpdateTime - The timestamp of the given &lt;code>data&lt;/code>
+         * @memberof ForecastController#
+         */
+        'create' (values) {
+            const dbContext = AppData;
+            const dbHandle = dbContext.db;
+            const sql = 'INSERT INTO forecast (' +
+                'location, data, lastUpdated) ' +
+                'VALUES (?, ?, DATETIME(?, \'localtime\'));';
+            const parameters = Object.values(values);
+
+            const executeCreate = function (tx) {
+                const onSuccess = function () {
+                    dbContext.onSuccess('Forecast storage')();
+                }
+
+                console.info('Storing forecast data . . .');
+                tx.executeSql(sql, parameters, onSuccess, dbContext.onError);
+            }
+
+            if (dbHandle) {
+                dbHandle.transaction(executeCreate, dbContext.onError, dbContext.onSuccess('Create statement'));
+            }
+
+        },
+
+        /**
+         * Returns the {@link Forecast} with the given &lt;code>id&lt;/code>, joined with its related {@link Location}, to the given callback
+         * @param {SQLTransactionCallback} callback - The function called if the query succeeds
+         * @param {number} id - The row id the {@link Forecast} to search for
+         * @memberof ForecastController#
+         */
+        'select' (callback, id) {
+            const context = AppData;
+            const dbHandle = context.db;
+            const sql = 'SELECT loc.city, loc.latitude, loc.longitude, f.* ' +
+                'FROM forecast f ' +
+                'JOIN location loc ON f.location = loc.locationID ' +
+                'WHERE f.location = ? ' +
+                'ORDER BY f.lastUpdated DESC LIMIT 1;';
+
+            const execute = function (tx) {
+                console.info('Fetching forecast ...');
+                tx.executeSql(sql, [id], callback, context.onError);
+            }
+
+            if (dbHandle) {
+                dbHandle.readTransaction(execute, context.onError, context.onSuccess('Query'));
+            }
+        },
+
+        /**
+         * Returns every {@link Forecast}, with fields pulled from each related {@link Location}, to the given callback
+         * @param {SQLTransactionCallback} callback - The function called if the query succeeds
+         * @memberof ForecastController#
+         */
+        'index' (callback) {
+            const context = AppData;
+            const dbHandle = context.db;
+            const sql = 'SELECT loc.city, loc.latitude, loc.longitude, f.* ' +
+                'FROM forecast f ' +
+                'JOIN location loc ON f.location = loc.locationID ' +
+                'ORDER BY f.lastUpdated DESC;';
+
+            const execute = function (tx) {
+                console.info('Fetching saved forecasts . . .');
+                tx.executeSql(sql, [], callback, context.onError);
+            }
+
+            if (dbHandle) {
+                dbHandle.readTransaction(execute, context.onError, context.onSuccess('Query'));
+            }
+        }
+    };
+}());
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Cordova Weather App</a></h2><h3>Namespaces</h3><ul><li><a href="AppData.html">AppData</a></li><li><a href="AppView.html">AppView</a></li><li><a href="ForecastController.html">ForecastController</a></li><li><a href="ForecastWorker.html">ForecastWorker</a></li><li><a href="Handlers.html">Handlers</a></li><li><a href="LocationController.html">LocationController</a></li><li><a href="PreferenceController.html">PreferenceController</a></li></ul><h3>Classes</h3><ul><li><a href="APIRequest.html">APIRequest</a></li><li><a href="Forecast.html">Forecast</a></li><li><a href="Location.html">Location</a></li><li><a href="Preference.html">Preference</a></li><li><a href="WeatherReading.html">WeatherReading</a></li></ul><h3>Global</h3><ul><li><a href="global.html#fetchWeatherIcon">fetchWeatherIcon</a></li><li><a href="global.html#getNextDate">getNextDate</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on October 26, 2020
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+<script>
+    var home = document.querySelector('a[href="index.html"]');
+    home.innerHTML = "Readme";
+    home.href = "index.html#content-start";
+
+    var target = window.location.href.split('/').reverse()[0]
+    if (target) {
+      var activePage = document.querySelector('nav ul li a[href="' + target + '"]');
+      if (activePage) {
+          activePage.style.fontWeight = '900';
+      }
+    }
+</script>
+</body>
+</html>
