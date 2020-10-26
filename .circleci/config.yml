@@ -1,0 +1,56 @@
+version: 2.1
+workflows:
+  cordova_apk:
+    jobs:
+      - build:
+          context:
+            - docker-hub-creds
+jobs:
+    build:
+        docker:
+          - image: circleci/android:api-29-node
+            auth:
+              username: $DOCKERHUB_USER
+              password: $DOCKERHUB_PASSWORD          
+        environment:
+          JVM_OPTS: -Xmx3200mls
+        steps:
+          - checkout
+          - restore_cache:
+              keys:
+                - dependency-cache-{{ checksum "package-lock.json" }}
+                - dependency-cache-
+          - run:
+              name: install-dependencies
+              command: npm install
+          - save_cache:
+              key: dependency-cache-{{ checksum "package-lock.json" }}
+              paths:
+                - ./node_modules
+          - restore_cache:
+              keys:
+                - jars-{{ checksum "platforms/android/build.gradle" }}-{{ checksum  "platforms/android/CordovaLib/build.gradle" }}
+                - jars-
+          - run:
+              name: build-APK
+              command: |
+                echo 'export ANDROID_SDK_ROOT=$ANDROID_HOME' >> $BASH_ENV
+                source $BASH_ENV
+                curl -s "https://get.sdkman.io" | bash
+                source "$HOME/.sdkman/bin/sdkman-init.sh"
+                sdk version
+                sdk install java 8.0.265-open
+                sdk install gradle 6.5
+                java -version
+                echo "const ENV = {'OPENWEATHER_APPID':'${OPENWEATHER_APPID}'}" > ./www/config.js
+                npm run build
+          - run:
+              name: run-tests
+              command: |
+                chmod +x ./scripts/upload
+                npm run lint
+                npm run test
+          - save_cache:
+              paths:
+                - ~/.gradle
+              key: jars-{{ checksum "platforms/android/build.gradle" }}-{{ checksum  "platforms/android/CordovaLib/build.gradle" }}

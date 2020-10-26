@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<!--
+ Copyright 2019-2020 rdipardo <dipardo.r@gmail.com>
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Weather Wizard | Today's Weather</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/lib/weather-icons.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/lib/weather-icons-wind.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:500&display=swap" />
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script src="js/lib/jquery-2.2.4.min.js"></script>
+    <script src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/lib/jquery.validate.min.js"></script>
+    <script src="js/app/services/AppData.js"></script>
+    <script src="js/app/services/AppView.js"></script>
+    <script src="js/app/controllers/LocationController.js"></script>
+    <script src="js/app/controllers/ForecastController.js"></script>
+    <script src="js/app/controllers/PreferenceController.js"></script>
+    <script src="js/app/models.js"></script>
+    <script src="js/app/handlers.js"></script>
+    <script src="js/app/utils.js"></script>
+</head>
+
+<body class="ui-mobile-viewport ui-overlay-a">
+
+    <!-- Landing Page -->
+    <div id="dailyForecastPage" data-role="page" class="wallpapered">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1 class="ui-title">Today's Weather</h1>
+        </header>
+        <section data-role="content">
+            <div id="currentConditions">
+                <div class="forecast forecast-data forecast-panel">
+                    <span>Fetching weather data . . . </span>
+                    <span class="fa fa-spinner fa-spin"></span>
+                </div>
+            </div>
+            <div id="locationSelector" class="input-panel">
+                <fieldset data-role="controlgroup" data-type="horizontal" class="ui-field-contain">
+                    <legend>Choose a location by:</legend>
+                    <input id="rdoCitySearch" name="rdoSearchType" value="byCity" type="radio" checked
+                        data-iconpos="right">
+                    <label for="rdoCitySearch">City</label>
+                    <input id="rdoGPSSearch" name="rdoSearchType" value="byGPS" type="radio">
+                    <label for="rdoGPSSearch">GPS</label>
+                </fieldset>
+                <hr>
+                <form id="chooseLocationForm" class="ui-filterable">
+                    <div id="txtCitySearch">
+                        <input type="text" id="txtCity" name="txtCity" data-type="search"
+                            placeholder="Search for a city" data-clear-btn="true" />
+                        <ul id="searchedCities" data-role="listview" data-input="#txtCity" data-filter="true"
+                            data-filter-reveal="true" data-inset="true">
+                            <!-- queried cities will be listed here -->
+                        </ul>
+                    </div>
+
+                    <div id="rngGPSSearch">
+                        <label for="rngLat">Latitude</label>
+                        <input type="range" id="rngLat" name="rngLat" min="-90" max="90" step="0.05" value="43.50">
+                        <label for="rngLong">Longitude</label>
+                        <input type="range" id="rngLong" name="rngLong" min="-180" max="180" step="0.05" value="-80.55">
+                    </div>
+                    <button id="btnUpdateForcastLocation" class="ui-btn-active" type="button" data-role="button"
+                        data-inline="true" disabled>Search</button>
+                </form>
+            </div>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home" data-theme="b">Today</a>
+                    </li>
+                    <li><a href="#extendedForecastPage" data-icon="cloud" data-theme="b">Next 5 Days</a></li>
+                    <li><a href="#settingsPage" data-icon="gear" data-theme="b">Settings</a></li>
+                    <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Extended Forecasts for Current Location -->
+    <div id="extendedForecastPage" data-role="page" class="wallpapered">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1 class="ui-title">Weather Outlook</h1>
+        </header>
+        <section data-role="content">
+            <div id="outlookCity" class="forecast forecast-data forecast-panel"></div>
+            <div>
+                <ul id="forecastOutlook" data-role="controlgroup" data-theme="b" data-icon="false">
+                    <li class="forecast forecast-data forecast-panel">
+                        <span>Fetching forecasts . . . </span>
+                        <span class="fa fa-spinner fa-spin"></span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#dailyForecastPage" data-icon="home" data-theme="b">Today</a></li>
+                    <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="cloud" data-theme="b">Next 5
+                            Days</a></li>
+                    <li><a href="#settingsPage" data-icon="gear" data-theme="b">Settings</a></li>
+                    <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- User Preferences -->
+    <div id="settingsPage" data-role="page" class="wallpapered">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1 class="ui-title">Settings</h1>
+        </header>
+        <section data-role="content">
+            <form id="settingsForm" action="#" method="post">
+                <fieldset data-role="controlgroup" data-type="horizontal" class="ui-field-contain">
+                    <legend>Show Temperatures In:</legend>
+                    <input id="rdoMetricTemp" name="rdoTempScale" value="MET" type="radio" checked data-iconpos="right">
+                    <label for="rdoMetricTemp">&deg;C</label>
+                    <input id="rdoImperialTemp" name="rdoTempScale" value="IMP" type="radio">
+                    <label for="rdoImperialTemp">&deg;F</label>
+                </fieldset>
+                <hr>
+                <fieldset data-role="controlgroup" data-type="horizontal" class="ui-field-contain">
+                    <legend>Show Wind Speeds In:</legend>
+                    <input id="rdoMetricWind" name="rdoWindScale" value="MET" type="radio" checked data-iconpos="right">
+                    <label for="rdoMetricWind">meters / sec</label>
+                    <input id="rdoImperialWind" name="rdoWindScale" value="IMP" type="radio">
+                    <label for="rdoImperialWind">miles / hr</label>
+                </fieldset>
+                <hr>
+                <fieldset data-role="controlgroup" data-type="horizontal" class="ui-field-contain">
+                    <legend>Show Precipitation In:</legend>
+                    <input id="rdoMetricPrecip" name="rdoPrecipScale" value="MET" type="radio" checked
+                        data-iconpos="right">
+                    <label for="rdoMetricPrecip">millimeters</label>
+                    <input id="rdoImperialPrecip" name="rdoPrecipScale" value="IMP" type="radio">
+                    <label for="rdoImperialPrecip">inches</label>
+                </fieldset>
+                <div id="preferenceControls">
+                    <button id="btnSavePreferences" data-inline="true" class="ui-btn-active" type="button"
+                        data-role="button">Save</button>
+                    <button id="btnClearPreferences" data-inline="true" data-theme="b" type="button"
+                        data-role="button">Reset</button>
+                </div>
+            </form>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#dailyForecastPage" data-icon="home" data-theme="b">Today</a></li>
+                    <li><a href="#extendedForecastPage" data-icon="cloud" data-theme="b">Next 5 Days</a></li>
+                    <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="gear" data-theme="b">Settings</a>
+                    <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- App Info -->
+    <div id="aboutPage" data-role="page" class="wallpapered">
+        <section data-role="content">
+            <header data-role="header" data-theme="b" data-position="fixed">
+                <h1 class="ui-title">About</h1>
+                <a href="#" data-rel="back" data-transition="slide" data-iconpos="right"
+                    class="ui-btn ui-btn-left ui-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+            </header>
+            <div id="appInfo" class="ui-field-contain">
+                <div>
+                    <p>Weather icons &copy; <a href="https://github.com/erikflowers/weather-icons">Erik Flowers</a></p>
+                    <p>App icon source image &copy; <a href="https://www.s-ings.com/typicons/">Stephen Hutchings</a>
+                        and distributed under a <em>Creative Commons Attribution-ShareAlike 4.0 International
+                            License</em>.</p>
+                    <p>App icon generated by <a href="https://github.com/romannurik/AndroidAssetStudio">Android Asset
+                            Studio</a>.</p>
+                    <p>Splash screen and background <a
+                            href="https://www.pexels.com/photo/assorted-hot-air-balloons-photo-during-sunset-670061">source
+                            image</a> distributed under a <em>Creative Commons Zero license (CC0)</em>.</p>
+
+                    <hr>
+                    <div id="icon-credit">
+                        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                            <img alt="Creative Commons License" style="border-width:0"
+                                src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />
+                        Portions of this work are licensed under a
+                        <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+                                Attribution-ShareAlike 4.0 Unported License</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <h6 class="ui-title">&copy; 2019 Robert Di Pardo</h6>
+        </footer>
+        <div id="shadow-overlay"></div>
+    </div>
+    <script src="cordova.js"></script>
+    <script src="config.js"></script>
+    <script src="js/app/services/ForecastWorker.js"></script>
+    <script src="js/init.js"></script>
+</body>
+
+</html>

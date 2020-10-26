@@ -1,0 +1,24 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "io.github.rdipardo.weatherwizard"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.github.rdipardo.weatherwizard"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.github.rdipardo.weatherwizard"
+    },
+    "cordova-plugin-proguard": {
+      "PACKAGE_NAME": "io.github.rdipardo.weatherwizard"
+    }
+  },
+  "dependent_plugins": {}
+}

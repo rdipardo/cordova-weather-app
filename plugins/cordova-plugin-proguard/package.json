@@ -1,0 +1,59 @@
+{
+  "_from": "cordova-plugin-proguard",
+  "_id": "cordova-plugin-proguard@2.2.0",
+  "_inBundle": false,
+  "_integrity": "sha512-lIvP19SYEavhHvwoRdPBZoLafJIjcLLl0duu3HbbufVWoNa9txKjpwFtxwjob7O5F5ne5uCfo///LTZRcy2wzw==",
+  "_location": "/cordova-plugin-proguard",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-proguard",
+    "name": "cordova-plugin-proguard",
+    "escapedName": "cordova-plugin-proguard",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-proguard/-/cordova-plugin-proguard-2.2.0.tgz",
+  "_shasum": "5dd307ed9b3b72f549d01a6293051ef129eafe86",
+  "_spec": "cordova-plugin-proguard",
+  "_where": "C:\\Users\\Rob\\source\\repos\\workspace\\git\\cordova-weather-app",
+  "author": {
+    "name": "Aleksandr Filatov",
+    "email": "greybax@gmail.com",
+    "url": "https://alfilatov.com"
+  },
+  "bugs": {
+    "url": "https://github.com/greybax/cordova-plugin-proguard/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Cordova plugin for ProGuard",
+  "devDependencies": {
+    "jshint": "2.11.0"
+  },
+  "homepage": "https://github.com/greybax/cordova-plugin-proguard#readme",
+  "keywords": [
+    "proguard",
+    "android",
+    "optimize",
+    "shrink",
+    "minify",
+    "obfuscate",
+    "tool",
+    "cordova",
+    "plugin"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-proguard",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greybax/cordova-plugin-proguard.git"
+  },
+  "version": "2.2.0"
+}
