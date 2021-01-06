@@ -1,39 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Cordova Weather App: API</title>
-    <link rel="shortcut icon" type="image/x-icon"
-        href="https://raw.githubusercontent.com/rdipardo/cordova-weather-app/master/www/favicon.ico">
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <script>
-        function replaceIcon () {
-            document.querySelector('.fa.fa-github').style.fontSize = 'initial';
-            document.querySelector('.fa.fa-github').style.lineHeight = "0"
-            document.querySelector('.fa.fa-github').style.fontWeight = 500;
-            document.querySelector('.fa.fa-github').innerText = 'View Source';
-        }
-    </script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- Adding meta -->
+    
+      
+        <meta name="author" content="Robert Di Pardo">
+      
+        <meta name="description" content="A simple weather feed generator for Android">
+      
+    
+    <title>
+      
+      Cordova Weather App - Preference
+      
+    </title>
     <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-    <link type="text/css" rel="stylesheet" onerror="replaceIcon()"
-        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+    <link type="text/css" rel="stylesheet" media="screen" href="styles/third-party/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" media="screen" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" media="screen" href="styles/clean-jsdoc-theme-base.css">
+    <link type="text/css" rel="stylesheet" media="screen" href="styles/clean-jsdoc-colorscheme.css">
+    <link type="text/css" rel="stylesheet" media="screen" href="styles/clean-jsdoc-theme-dark.css">
+    <!-- Adding overlay -->
+    
+    <!-- Adding assets -->
+    
+    <!-- Adding style-->
+    
+    <!-- Dynamic style tweaks -->
+    
+    
+      <style>
+        .code-lang-name  {
+            display: none;
+        }
+        .readme code {
+            margin: 0;
+        }
+      </style>
+    
+    <style>
+      
+      .sidebar-list-div {
+          margin-top: 25px;
+      }
+    </style>
+    <!-- Add inline style -->
+    
+    <style>
+      .readme table th {border: 0; padding: 0;}
+    </style>
+    
+    <!-- Adding external script-->
+    
+    <!-- Adding scripts-->
+    
 </head>
-
 <body>
+<svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none">
+    <defs>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
+                <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z"/>
+            </g>
+        </symbol>
+    </defs>
+</svg>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <span class="navicon"></span>
+</label>
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    
+    <div class="gh-meta">
+    <p><b>Version</b> 1.2.1</p>
+    <p>
+      <a href="https://github.com/rdipardo/cordova-weather-app/" title="View project on Github"><span class="fa fa-github" aria-hidden="true"></span></a>
+    </p>
+    </div>
+    
+    <h2><a href="index.html"><span class="text">README</span></a></h2><div class="search-box"><input type="text" placeholder="Search..." id="search-box" /><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-list-div"><h3>Classes</h3><ul><li><a href="APIRequest.html">APIRequest</a></li><li><a href="Forecast.html">Forecast</a></li><li><a href="Location.html">Location</a></li><li><a href="Preference.html">Preference</a></li><li><a href="WeatherReading.html">WeatherReading</a></li></ul><h3>Namespaces</h3><ul><li><a href="AppData.html">AppData</a><ul class='methods'><li data-type='method'><a href="AppData.html#initialize">initialize</a></li><li data-type='method'><a href="AppData.html#purge">purge</a></li></ul></li><li><a href="AppView.html">AppView</a><ul class='methods'><li data-type='method'><a href="AppView.html#clearPreferences">clearPreferences</a></li><li data-type='method'><a href="AppView.html#loadPreferences">loadPreferences</a></li><li data-type='method'><a href="AppView.html#show">show</a></li><li data-type='method'><a href="AppView.html#updateLocation">updateLocation</a></li><li data-type='method'><a href="AppView.html#updatePreferences">updatePreferences</a></li></ul></li><li><a href="ForecastController.html">ForecastController</a><ul class='methods'><li data-type='method'><a href="ForecastController.html#create">create</a></li><li data-type='method'><a href="ForecastController.html#index">index</a></li><li data-type='method'><a href="ForecastController.html#select">select</a></li></ul></li><li><a href="ForecastWorker.html">ForecastWorker</a><ul class='methods'><li data-type='method'><a href="ForecastWorker.html#expire">expire</a></li><li data-type='method'><a href="ForecastWorker.html#getCurrentReport">getCurrentReport</a></li><li data-type='method'><a href="ForecastWorker.html#getForecast">getForecast</a></li></ul></li><li><a href="Handlers.html">Handlers</a></li><li><a href="LocationController.html">LocationController</a><ul class='methods'><li data-type='method'><a href="LocationController.html#create">create</a></li><li data-type='method'><a href="LocationController.html#index">index</a></li><li data-type='method'><a href="LocationController.html#select">select</a></li></ul></li><li><a href="PreferenceController.html">PreferenceController</a><ul class='methods'><li data-type='method'><a href="PreferenceController.html#get">get</a></li><li data-type='method'><a href="PreferenceController.html#set">set</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3><ul><li><a href="global.html#fetchWeatherIcon">fetchWeatherIcon</a></li><li><a href="global.html#getNextDate">getNextDate</a></li></ul></div>
+</nav>
 
 <div id="main">
-    <div class="gh-meta">
-    <p><b>Version</b> 1.2.0</p>
-    <p><a href="https://github.com/rdipardo/cordova-weather-app/" title="View project on Github"><span class="fa fa-github" aria-hidden="true"></span></a></p>
-    </div>
+    
+    <h1 class="page-title">Preference</h1>
+    
     
 
 
@@ -41,14 +102,23 @@
 
 <section>
 
+
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Preference<span class="signature">(init)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Encapsulates display preferences</div>
+        <h2>
+        
+        Preference
+        
+        </h2>
+        
+        
+            <div class="class-description"><p>Encapsulates display preferences</p></div>
+            <hr/>
         
     
 </header>
+
 
 <article>
     <div class="container-overview">
@@ -56,20 +126,22 @@
         
 
     
-    <h2>Constructor</h2>
+        <h2>Constructor</h2>
     
 
-    
-    <h4 class="name" id="Preference"><span class="type-signature"></span>new Preference<span class="signature">(init)</span><span class="type-signature"></span></h4>
-    
+    <h4 class="name" id="Preference">
+        <a href="#Preference">#</a>
+        <span class="type-signature"></span>new Preference<span class="signature">(init)</span><span class="type-signature"></span>
+    </h4>
 
     
 
 
 
-<div class="description">
-    Initializes a new <a href="Preference.html">Preference</a>
-</div>
+    <div class="description">
+        <p>Initializes a new <a href="Preference.html">Preference</a></p>
+        
+    </div>
 
 
 
@@ -79,8 +151,9 @@
 
 
 
-    <h5>Parameters:</h5>
-    
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
 
 <table class="params">
     <thead>
@@ -110,7 +183,8 @@
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type"><code>object</code></span>
+
 
 
             
@@ -120,7 +194,7 @@
 
             
 
-            <td class="description last">The initial values of a new <a href="Preference.html">Preference</a>
+            <td class="description last"><p>The initial values of a new <a href="Preference.html">Preference</a></p>
                 <h6>Properties</h6>
                 
 
@@ -152,7 +226,8 @@
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type"><code>string</code></span>
+
 
 
             
@@ -162,7 +237,7 @@
 
             
 
-            <td class="description last">A temperature scale; must be <code>"MET"</code> (metric) or <code>"IMP"</code> (imperial)</td>
+            <td class="description last"><p>A temperature scale; must be <code>&quot;MET&quot;</code> (metric) or <code>&quot;IMP&quot;</code> (imperial)</p></td>
         </tr>
 
     
@@ -175,7 +250,8 @@
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type"><code>string</code></span>
+
 
 
             
@@ -185,7 +261,7 @@
 
             
 
-            <td class="description last">A wind speed scale; <code>"MET"</code> or <code>"IMP"</code></td>
+            <td class="description last"><p>A wind speed scale; <code>&quot;MET&quot;</code> or <code>&quot;IMP&quot;</code></p></td>
         </tr>
 
     
@@ -198,7 +274,8 @@
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type"><code>string</code></span>
+
 
 
             
@@ -208,7 +285,7 @@
 
             
 
-            <td class="description last">A precipitation measurement scale; <code>"MET"</code> or <code>"IMP"</code></td>
+            <td class="description last"><p>A precipitation measurement scale; <code>&quot;MET&quot;</code> or <code>&quot;IMP&quot;</code></p></td>
         </tr>
 
     
@@ -221,6 +298,21 @@
     
     </tbody>
 </table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -254,10 +346,12 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models.js.html">models.js</a>, <a href="models.js.html#line172">line 172</a>
-    </li></ul></dd>
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="models.js.html">models.js</a>, <a href="models.js.html#line172">line 172</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -267,23 +361,7 @@
     
 </dl>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<hr />
 
 
     
@@ -295,9 +373,7 @@
 
     
 
-    
-
-    
+     
 
     
 
@@ -306,22 +382,32 @@
 
         
             
-<h4 class="name" id="preferredPrecipitationScale"><span class="type-signature"></span>preferredPrecipitationScale<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="preferredPrecipitationScale">
+    <a href="#preferredPrecipitationScale">#</a>
+    <span class="type-signature"></span>preferredPrecipitationScale<span class="type-signature"> :string</span>
+</h4>
 
 
 
 
+    
+        <div class="member-item-container flex">
+            <strong>Type: </strong>
+            <ul>
+                <li>
+                    
+<span class="param-type"><code>string</code></span>
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
+
+                </li>
+            </ul>
+        </div>
+    
 
 
-        </li>
-    </ul>
+
+
 
 
 
@@ -354,10 +440,12 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models.js.html">models.js</a>, <a href="models.js.html#line190">line 190</a>
-    </li></ul></dd>
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="models.js.html">models.js</a>, <a href="models.js.html#line190">line 190</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -367,29 +455,37 @@
     
 </dl>
 
-
-
-
+<hr />
 
 
         
             
-<h4 class="name" id="preferredTempScale"><span class="type-signature"></span>preferredTempScale<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="preferredTempScale">
+    <a href="#preferredTempScale">#</a>
+    <span class="type-signature"></span>preferredTempScale<span class="type-signature"> :string</span>
+</h4>
 
 
 
 
+    
+        <div class="member-item-container flex">
+            <strong>Type: </strong>
+            <ul>
+                <li>
+                    
+<span class="param-type"><code>string</code></span>
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
+
+                </li>
+            </ul>
+        </div>
+    
 
 
-        </li>
-    </ul>
+
+
 
 
 
@@ -422,10 +518,12 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models.js.html">models.js</a>, <a href="models.js.html#line184">line 184</a>
-    </li></ul></dd>
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="models.js.html">models.js</a>, <a href="models.js.html#line184">line 184</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -435,29 +533,37 @@
     
 </dl>
 
-
-
-
+<hr />
 
 
         
             
-<h4 class="name" id="preferredWindScale"><span class="type-signature"></span>preferredWindScale<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="preferredWindScale">
+    <a href="#preferredWindScale">#</a>
+    <span class="type-signature"></span>preferredWindScale<span class="type-signature"> :string</span>
+</h4>
 
 
 
 
+    
+        <div class="member-item-container flex">
+            <strong>Type: </strong>
+            <ul>
+                <li>
+                    
+<span class="param-type"><code>string</code></span>
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
+
+                </li>
+            </ul>
+        </div>
+    
 
 
-        </li>
-    </ul>
+
+
 
 
 
@@ -490,10 +596,12 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models.js.html">models.js</a>, <a href="models.js.html#line187">line 187</a>
-    </li></ul></dd>
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="models.js.html">models.js</a>, <a href="models.js.html#line187">line 187</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -503,9 +611,7 @@
     
 </dl>
 
-
-
-
+<hr />
 
 
         
@@ -525,30 +631,52 @@
 
 </div>
 
-<nav>
-    <h2><a href="index.html">Cordova Weather App</a></h2><h3>Namespaces</h3><ul><li><a href="AppData.html">AppData</a></li><li><a href="AppView.html">AppView</a></li><li><a href="ForecastController.html">ForecastController</a></li><li><a href="ForecastWorker.html">ForecastWorker</a></li><li><a href="Handlers.html">Handlers</a></li><li><a href="LocationController.html">LocationController</a></li><li><a href="PreferenceController.html">PreferenceController</a></li></ul><h3>Classes</h3><ul><li><a href="APIRequest.html">APIRequest</a></li><li><a href="Forecast.html">Forecast</a></li><li><a href="Location.html">Location</a></li><li><a href="Preference.html">Preference</a></li><li><a href="WeatherReading.html">WeatherReading</a></li></ul><h3>Global</h3><ul><li><a href="global.html#fetchWeatherIcon">fetchWeatherIcon</a></li><li><a href="global.html#getNextDate">getNextDate</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on October 26, 2020
+<footer id="footer">
+  
+  Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on January 6, 2021 using the <a href="https://github.com/rdipardo/clean-jsdoc-theme">clean-jsdoc</a> dark theme.
+  
 </footer>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script src="scripts/third-party/prettify.min.js"></script>
+<script src="scripts/third-party/lang-css.js"></script>
+<script src="scripts/third-party/fuse.js"></script>
+<script src="scripts/search.js" defer></script>
+<script src="scripts/misc.js" defer></script>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js" defer></script>
+<script src="scripts/fix-code-block.js" defer></script>
 <script>
-    var home = document.querySelector('a[href="index.html"]');
-    home.innerHTML = "Readme";
-    home.href = "index.html#content-start";
-
-    var target = window.location.href.split('/').reverse()[0]
-    if (target) {
-      var activePage = document.querySelector('nav ul li a[href="' + target + '"]');
-      if (activePage) {
-          activePage.style.fontWeight = '900';
+  document.addEventListener("DOMContentLoaded", function () {
+      if (document.getElementById('search-box')) {
+          var list = [{"title":"APIRequest","link":"<a href=\"APIRequest.html\">APIRequest</a>"},{"title":"Forecast","link":"<a href=\"Forecast.html\">Forecast</a>"},{"title":"Location","link":"<a href=\"Location.html\">Location</a>"},{"title":"Preference","link":"<a href=\"Preference.html\">Preference</a>"},{"title":"WeatherReading","link":"<a href=\"WeatherReading.html\">WeatherReading</a>"},{"title":"AppData","link":"<a href=\"AppData.html\">AppData</a>"},{"title":"AppData#initialize","link":"<a href=\"AppData.html#initialize\">AppData &rtrif; initialize</a>"},{"title":"AppData#purge","link":"<a href=\"AppData.html#purge\">AppData &rtrif; purge</a>"},{"title":"AppView","link":"<a href=\"AppView.html\">AppView</a>"},{"title":"AppView#clearPreferences","link":"<a href=\"AppView.html#clearPreferences\">AppView &rtrif; clearPreferences</a>"},{"title":"AppView#loadPreferences","link":"<a href=\"AppView.html#loadPreferences\">AppView &rtrif; loadPreferences</a>"},{"title":"AppView#show","link":"<a href=\"AppView.html#show\">AppView &rtrif; show</a>"},{"title":"AppView#updateLocation","link":"<a href=\"AppView.html#updateLocation\">AppView &rtrif; updateLocation</a>"},{"title":"AppView#updatePreferences","link":"<a href=\"AppView.html#updatePreferences\">AppView &rtrif; updatePreferences</a>"},{"title":"ForecastController","link":"<a href=\"ForecastController.html\">ForecastController</a>"},{"title":"ForecastController#create","link":"<a href=\"ForecastController.html#create\">ForecastController &rtrif; create</a>"},{"title":"ForecastController#index","link":"<a href=\"ForecastController.html#index\">ForecastController &rtrif; index</a>"},{"title":"ForecastController#select","link":"<a href=\"ForecastController.html#select\">ForecastController &rtrif; select</a>"},{"title":"ForecastWorker","link":"<a href=\"ForecastWorker.html\">ForecastWorker</a>"},{"title":"ForecastWorker#expire","link":"<a href=\"ForecastWorker.html#expire\">ForecastWorker &rtrif; expire</a>"},{"title":"ForecastWorker#getCurrentReport","link":"<a href=\"ForecastWorker.html#getCurrentReport\">ForecastWorker &rtrif; getCurrentReport</a>"},{"title":"ForecastWorker#getForecast","link":"<a href=\"ForecastWorker.html#getForecast\">ForecastWorker &rtrif; getForecast</a>"},{"title":"Handlers","link":"<a href=\"Handlers.html\">Handlers</a>"},{"title":"LocationController","link":"<a href=\"LocationController.html\">LocationController</a>"},{"title":"LocationController#create","link":"<a href=\"LocationController.html#create\">LocationController &rtrif; create</a>"},{"title":"LocationController#index","link":"<a href=\"LocationController.html#index\">LocationController &rtrif; index</a>"},{"title":"LocationController#select","link":"<a href=\"LocationController.html#select\">LocationController &rtrif; select</a>"},{"title":"PreferenceController","link":"<a href=\"PreferenceController.html\">PreferenceController</a>"},{"title":"PreferenceController#get","link":"<a href=\"PreferenceController.html#get\">PreferenceController &rtrif; get</a>"},{"title":"PreferenceController#set","link":"<a href=\"PreferenceController.html#set\">PreferenceController &rtrif; set</a>"},{"title":"fetchWeatherIcon","link":"<a href=\"global.html#fetchWeatherIcon\">Global &rtrif; fetchWeatherIcon</a>"},{"title":"getNextDate","link":"<a href=\"global.html#getNextDate\">Global &rtrif; getNextDate</a>"}];
+          setupSearch(list)
       }
+})
+</script>
+
+
+
+
+
+<script>
+    function replaceIcon() {
+        var metaField = document.querySelector('.gh-meta')
+        var iconField = document.querySelector('.gh-meta p ~ p')
+        var icon = document.querySelector('.fa.fa-github')
+        icon.style.fontSize = 'initial'
+        icon.style.lineHeight = '0'
+        icon.style.fontWeight = 500
+        icon.innerText = 'Source'
+        iconField.style.margin = '0'
     }
+
+    var fa = document.createElement('link')
+    fa.href = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
+    fa.rel = 'stylesheet'
+    fa.type = 'text/css'
+    fa.onerror = replaceIcon
+    var style = document.getElementsByTagName('link')[0]
+    style.parentNode.insertBefore(fa, style)
 </script>
 </body>
 </html>
