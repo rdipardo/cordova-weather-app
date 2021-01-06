@@ -1,5 +1,5 @@
 /**
- * Copyright 2019-2020 rdipardo <dipardo.r@gmail.com>
+ * Copyright 2019-2021 rdipardo <dipardo.r@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,7 +77,9 @@ const getNextDate = function (offset) {
             }
         }
 
-        tommorrow = new Date(tommorrow.setMonth(thisMon + 1));
+        const nextMonth = thisMon < 11 ? thisMon + 1 : 0;
+
+        tommorrow = new Date(tommorrow.setMonth(nextMonth));
         tommorrow = tommorrow.setDate(daysFwd - lastDay);
     }
 

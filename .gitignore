@@ -3,10 +3,14 @@
 *.iml
 .gradle
 **/assets
+**/drawable-mdpi
+**/mipmap-mdpi
 **/build
 doc*/
 gh-pages/
+out*/
 www/**/config*
+.env*
 /local.properties
 /.idea/caches
 /.idea/libraries

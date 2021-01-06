@@ -1,0 +1,39 @@
+name: API Docs
+on:
+  push:
+    branches:
+      - main
+      - '!dependabot/**'
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up node env
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: '12.x'
+
+      - name: Cache modules
+        uses: actions/cache@v2
+        id: restore-cache
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-npm-
+
+      - name: Install JSDoc and template assets
+        run: npm install --save-dev jsdoc rdipardo/clean-jsdoc-theme
+
+      - name: Build docs
+        run: npm run gendocs
+
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          enable_jekyll: false
+          publish_dir: ./doc
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions@users.noreply.github.com'
+          commit_message: '[skip ci] ${{ github.event.head_commit.message }}'

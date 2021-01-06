@@ -3,9 +3,9 @@ const dismiss = require('../wd_helper')
 describe('Display Preferences Screen', () => {
     let todayNav = null;
 
-    beforeAll(() => driver.setImplicitTimeout(9000));
+    beforeAll(() => driver.setImplicitTimeout(12000));
 
-    beforeEach(async done => {
+    beforeEach(async () => {
         await (async () => {
             const prefsNav = await $('android=new UiSelector().text("Settings").className("android.widget.TextView")');
 
@@ -17,7 +17,7 @@ describe('Display Preferences Screen', () => {
             await prefsNav.touchAction({
                 'action': 'tap'
             });
-        })().then(done);
+        })();
     });
 
     afterEach(async () => {
@@ -57,7 +57,7 @@ describe('Display Preferences Screen', () => {
         });
         const windValues = await $('android=new UiSelector().textContains("miles/hr").className("android.widget.TextView")');
 
-        expect(await windValues.isDisplayed()).toBe(true);
+        expect(await windValues.isDisplayed()).toBeTrue();
     });
 
     it('should restore metric units after reset', async () => {
@@ -71,6 +71,6 @@ describe('Display Preferences Screen', () => {
         });
         const windValues = await $('android=new UiSelector().textContains("meters/sec").className("android.widget.TextView")');
 
-        expect(await windValues.isDisplayed()).toBe(true);
+        expect(await windValues.isDisplayed()).toBeTrue();
     });
 });

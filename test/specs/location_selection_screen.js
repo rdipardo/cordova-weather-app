@@ -7,7 +7,7 @@ describe('Location Selection Screen', () => {
 
     beforeAll(() => driver.setImplicitTimeout(5000));
 
-    beforeEach(async done => {
+    beforeEach(async () => {
         await (async () => {
             txtInput = await $('android=new UiSelector().className("android.widget.EditText").instance(0)');
             await dismiss(txtInput);
@@ -17,7 +17,7 @@ describe('Location Selection Screen', () => {
 
             submitBtn = await $('android=new UiSelector().text("Search").className("android.widget.Button")');
             await dismiss(submitBtn);
-        })().then(done);
+        })();
     });
 
     afterEach(async () => {
@@ -29,7 +29,7 @@ describe('Location Selection Screen', () => {
 
     it('should show city name input by default', async () => {
         expect(await citySelector.getAttribute('checked')).toEqual('true');
-        expect(await txtInput.isDisplayed()).toBe(true);
+        expect(await txtInput.isDisplayed()).toBeTrue();
     });
 
     it('should disable search button when text input is empty', async () => {
@@ -39,7 +39,7 @@ describe('Location Selection Screen', () => {
 
     it('should enable search button when text is entered', async () => {
         await txtInput.addValue('Tokyo');
-        expect(await submitBtn.isEnabled()).toBe(true);
+        expect(await submitBtn.isEnabled()).toBeTrue();
     });
 
     it('should enable search button when switching to GPS input', async () => {
@@ -51,9 +51,9 @@ describe('Location Selection Screen', () => {
         const rngLat = await $('android=new UiSelector().text("Latitude").className("android.widget.SeekBar")');
         const rngLong = await $('android=new UiSelector().text("Longitude").className("android.widget.SeekBar")');
 
-        expect(await rngLat.isDisplayed()).toBe(true);
-        expect(await rngLong.isDisplayed()).toBe(true);
-        expect(await submitBtn.isEnabled()).toBe(true);
+        expect(await rngLat.isDisplayed()).toBeTrue();
+        expect(await rngLong.isDisplayed()).toBeTrue();
+        expect(await submitBtn.isEnabled()).toBeTrue();
     });
 
     it('should update screen after searching a city', async () => {

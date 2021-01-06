@@ -1,5 +1,5 @@
 /**
- * Copyright 2019-2020 rdipardo <dipardo.r@gmail.com>
+ * Copyright 2019-2021 rdipardo <dipardo.r@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -405,23 +405,22 @@ const ForecastWorker = (function () {
                     let entries =
                         Array.prototype.slice.apply(conditions)
                             .map(forecast => {
+                                const nextDay = new Date(parseInt(forecast.dt, 10) * 1000).getDay();
                                 let futureReport = null;
 
-                                switch (Math.abs(todayCode - new Date(parseInt(forecast.dt, 10) * 1000).getDay())) {
+                                switch (Math.abs(todayCode - nextDay)) {
                                 case 0:
                                 case 1:
                                 case 2:
                                 case 3:
                                 case 4:
                                 case 5:
-                                case 6:
-                                case 7:
                                     futureReport = formatData(
                                         new WeatherReading({
                                             'city': row.city,
                                             'latitude': row.latitude,
                                             'longitude': row.longitude,
-                                            'currency': new Date(parseInt(forecast.dt, 10) * 1000).getDay(),
+                                            'currency': nextDay,
                                             'brief': forecast.weather[0].description,
                                             'temp': forecast.main.temp,
                                             'low': forecast.main.temp_min,

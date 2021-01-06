@@ -5,7 +5,7 @@ describe('App Information Screen', () => {
 
     beforeAll(() => driver.setImplicitTimeout(5000));
 
-    beforeEach(async done => {
+    beforeEach(async () => {
         await (async () => {
             const aboutNav = await $('android=new UiSelector().text("About").className("android.widget.TextView")');
 
@@ -17,7 +17,7 @@ describe('App Information Screen', () => {
             await aboutNav.touchAction({
                 'action': 'tap'
             });
-        })().then(done);
+        })();
     });
 
     afterEach(async () => {
@@ -34,19 +34,19 @@ describe('App Information Screen', () => {
     it('should acknowledge author of weather icon set', async () => {
         const attribution = await $('android=new UiSelector().textContains("Erik Flowers").className("android.widget.TextView")');
 
-        expect(await attribution.isDisplayed()).toBe(true);
+        expect(await attribution.isDisplayed()).toBeTrue();
     });
 
     it('should acknowledge app icon author', async () => {
         const attribution = await $('android=new UiSelector().textContains("Stephen Hutchings").className("android.widget.TextView")');
 
-        expect(await attribution.isDisplayed()).toBe(true);
+        expect(await attribution.isDisplayed()).toBeTrue();
     });
 
     it('should display content license statement', async () => {
         const CC_BY_SA_4 = 'Creative Commons Attribution-ShareAlike 4.0 International License';
         const attribution = await $(`android=new UiSelector().textContains("${CC_BY_SA_4}").className("android.widget.TextView")`);
 
-        expect(await attribution.isDisplayed()).toBe(true);
+        expect(await attribution.isDisplayed()).toBeTrue();
     });
 });

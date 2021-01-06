@@ -1,6 +1,6 @@
-# Cordova Weather App<a name="content-start"></a>
+# Cordova Weather App
 
-[![CircleCI][cci-status-badge]][cci-status]  [![BrowserStack Build Status][bs-status-badge]][bs-status]
+[![API Docs]][API Docs Workflow]  [![CircleCI][cci-status-badge]][cci-status]  [![BrowserStack Build Status][bs-status-badge]][bs-status]
 
 Hybrid Android app using [cordova-android] for native geolocation, with a WebView interface built on [jQuery Mobile].
 
@@ -20,17 +20,16 @@ Skip the last item if you're comfortable with using a personal device in Develop
 
 ### Configuring your build environment
 
-**Note.** 
+**Note.**
 This app depends on the [OpenWeather API][] to fetch current weather data. *No other API will work!*
 
 - Make sure to [create an OpenWeather account][] and obtain [your API token][]
-
 - Verify that `node`, `npm` and `gradle` are on your system's `PATH`. The commands
 `node -v`, `npm -v` and `gradle -v` should print out an appropriate version string
-
 - Create a `JAVA_HOME` environment variable pointing to your JDK installation
 
-**Note.** The `JAVA_HOME` path *should not include* the `bin` folder!
+**Note.**
+The `JAVA_HOME` path *should not include* the `bin` folder!
 
 ##### Windows
 
@@ -45,7 +44,9 @@ This app depends on the [OpenWeather API][] to fetch current weather data. *No o
 
 Add this line to your `~/.profile`, `~/.zshrc` or `~/.bashrc`:
 
-    export JAVA_HOME=/full/path/to/your/JDK
+```sh
+export JAVA_HOME="/full/path/to/your/JDK"
+```
 
 - Make a note of where the Android SDK libraries have been installed and locate the directory on your file system
 - Copy and paste the full path, e.g.
@@ -57,10 +58,11 @@ Add this line to your `~/.profile`, `~/.zshrc` or `~/.bashrc`:
 ##### Mac or Linux
 
     /full/path/to/your/Android/Sdk
+<br/>
 
 - Following the same steps as above, create an `ANDROID_SDK_ROOT` environment variable pointing to the SDK path (**preferred**)
 
-> Alternatively, you may create an `ANDROID_HOME` environment variable pointing to the SDK path (**deprecated but still acceptable**)
+> Alternatively, create an `ANDROID_HOME` environment variable pointing to the SDK path (**deprecated but still acceptable**)
 
 ### Configuring `gradle`
 
@@ -70,7 +72,7 @@ If you want to target a specific Android API level, or tweak the compilation pro
 
 ## Building
 
-Find [your API token][] and save it to `wwww/config.js` like so:
+Find [your API token][] and save it to `www/config.js`:
 
 ```javascript
 const ENV = {
@@ -80,30 +82,26 @@ const ENV = {
 
 Validate your setup with `npm run check`, then run:
 
-    npm install
-    npm run build
+```text
+npm install
+npm run build
+```
 
 ## Testing
 
 - Sign up for [BrowserStack]
-- Open your terminal/cmd.exe/PowerShell prompt and set environment variables for your username and access key, e.g.
+- Add your username and access key to a `.env` file and save it to the root of the source tree:
 
-##### Windows (cmd.exe)
+```sh
+BROWSERSTACK_USERNAME="your_username"
+BROWSERSTACK_ACCESS_KEY="your_access_key"
+```
 
-    set "BROWSERSTACK_USERNAME=your_username"
-    set "BROWSERSTACK_ACCESS_KEY=your_access_key"
+- Run the automation tests:
 
-##### Windows (PowerShell)
-
-    $env:BROWSERSTACK_USERNAME="your_username"
-    $env:BROWSERSTACK_ACCESS_KEY="your_access_key"
-
-##### Mac or Linux
-
-    export BROWSERSTACK_USERNAME="your_username"
-    export BROWSERSTACK_ACCESS_KEY="your_access_key"
-
-- Run the automation tests: `npm run test`
+```text
+npm test
+```
 
 ## Running locally
 
@@ -111,22 +109,23 @@ Validate your setup with `npm run check`, then run:
 
 Make sure the emulator is fired up ahead of time (it will take a while!), then run:
 
-    npm run emulator
+```text
+npm run emulator
+```
 
 ##### Using a device
 
 Be sure to [enable USB debugging] on the device (requires [Developer Mode]). Connect it via USB cable to your PC, then run:
 
-    npm run device
+```text
+npm run device
+```
 
 ## Acknowledgements
 
-Weather icons copyright (c) [Erik Flowers](https://github.com/erikflowers/weather-icons).
-
-Weather icons font licensed under the terms of the [SIL OFL 1.1](http://scripts.sil.org/OFL).
-
-Weather icons source code licensed under the terms of the [MIT License](http://opensource.org/licenses/mit-license.html).
-
+Weather icons copyright (c) [Erik Flowers](https://github.com/erikflowers/weather-icons).<br/>
+Weather icons font licensed under the terms of the [SIL OFL 1.1](http://scripts.sil.org/OFL).<br/>
+Weather icons source code licensed under the terms of the [MIT License](http://opensource.org/licenses/mit-license.html).<br/>
 Visit the [Weather Icons](https://github.com/erikflowers/weather-icons) repository for complete licensing and attribution details.
 
 App icon source image copyright (c) [Stephen Hutchings](https://www.iconfinder.com/icons/216532/stormy_weather_icon) and distributed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0).
@@ -135,7 +134,7 @@ Splash screen and background [source image](https://www.pexels.com/photo/assorte
 
 ## License
 
-Copyright (c) 2019-2020 Robert Di Pardo
+Copyright (c) 2019-2021 Robert Di Pardo
 
 Distributed under the [Apache License Version 2.0](https://opensource.org/licenses/Apache-2.0).
 
@@ -158,8 +157,8 @@ Portions of this work are licensed under a [Creative Commons Attribution-ShareAl
 [cci-status-badge]: https://circleci.com/gh/rdipardo/cordova-weather-app.svg?style=svg
 [bs-status]: https://app-automate.browserstack.com/dashboard/v2/builds/401dd049668eb908545b1c6ff845abecbfb33538
 [bs-status-badge]: https://app-automate.browserstack.com/badge.svg?badge_key=ZjZJTTlKZCtrOEUweXBqTlR2THpDNkhZTXc4R3phdW9IbnRoOVA4WkpYOD0tLU00VjFSZEIxOGRKTXB6alR0TURkK1E9PQ==--4c44450eca889dc5b5905421dcf98e2197a07690
-
-<!-- screens -->
-[WeatherWizard-daily-screen]: https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/.github/img/Screenshot_20200827-231813_WeatherWizard.jpg
-[WeatherWizard-gps-search]: https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/.github/img/Screenshot_20200827-231900_WeatherWizard.jpg
-[WeatherWizard-long-range]: https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/.github/img/Screenshot_20200827-231917_WeatherWizard.jpg
+[API Docs]: https://github.com/rdipardo/cordova-weather-app/workflows/API%20Docs/badge.svg?branch=main
+[API Docs Workflow]: https://github.com/rdipardo/cordova-weather-app/actions?query=workflow%3AAPI%20Docs
+[WeatherWizard-daily-screen]: https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/.github/img/daily_city_search.jpg
+[WeatherWizard-gps-search]: https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/.github/img/daily_gps_search.jpg
+[WeatherWizard-long-range]: https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/.github/img/five_day_outlook.jpg
