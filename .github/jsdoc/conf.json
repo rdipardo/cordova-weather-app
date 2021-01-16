@@ -15,10 +15,7 @@
     },
     "templates": {
         "cleverLinks": false,
-        "monospaceLinks": false,
-        "default": {
-            "includeDate": false
-        }
+        "monospaceLinks": false
     },
     "opts": {
         "template": "node_modules/clean-jsdoc",
