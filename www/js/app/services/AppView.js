@@ -332,9 +332,11 @@ const AppView = (function () {
                      * case, make sure the inputs are initialized!
                      */
                     try {
-                        $('#rdoMetricTemp').prop('checked', false)
+                        $('#rdoMetricTemp')
+                            .prop('checked', false)
                             .checkboxradio('refresh');
-                        $('#rdoImperialTemp').prop('checked', true)
+                        $('#rdoImperialTemp')
+                            .prop('checked', true)
                             .checkboxradio('refresh');
                     } catch (_) {
                         $('#rdoMetricTemp').prop('checked', false);
@@ -344,9 +346,11 @@ const AppView = (function () {
 
                 if (preferences.preferredWindScale === 'IMP') {
                     try {
-                        $('#rdoMetricWind').prop('checked', false)
+                        $('#rdoMetricWind')
+                            .prop('checked', false)
                             .checkboxradio('refresh');
-                        $('#rdoImperialWind').prop('checked', true)
+                        $('#rdoImperialWind')
+                            .prop('checked', true)
                             .checkboxradio('refresh');
                     } catch (_) {
                         $('#rdoMetricWind').prop('checked', false);
@@ -356,9 +360,11 @@ const AppView = (function () {
 
                 if (preferences.preferredPrecipitationScale === 'IMP') {
                     try {
-                        $('#rdoMetricPrecip').prop('checked', false)
+                        $('#rdoMetricPrecip')
+                            .prop('checked', false)
                             .checkboxradio('refresh');
-                        $('#rdoImperialPrecip').prop('checked', true)
+                        $('#rdoImperialPrecip')
+                            .prop('checked', true)
                             .checkboxradio('refresh');
                     } catch (_) {
                         $('#rdoMetricPrecip').prop('checked', false);
@@ -374,17 +380,23 @@ const AppView = (function () {
          */
         'clearPreferences' () {
             PreferenceController.set(null);
-            $('#rdoMetricTemp').prop('checked', true)
+            $('#rdoMetricTemp')
+                .prop('checked', true)
                 .checkboxradio('refresh');
-            $('#rdoImperialTemp').prop('checked', false)
+            $('#rdoImperialTemp')
+                .prop('checked', false)
                 .checkboxradio('refresh');
-            $('#rdoMetricWind').prop('checked', true)
+            $('#rdoMetricWind')
+                .prop('checked', true)
                 .checkboxradio('refresh');
-            $('#rdoImperialWind').prop('checked', false)
+            $('#rdoImperialWind')
+                .prop('checked', false)
                 .checkboxradio('refresh');
-            $('#rdoMetricPrecip').prop('checked', true)
+            $('#rdoMetricPrecip')
+                .prop('checked', true)
                 .checkboxradio('refresh');
-            $('#rdoImperialPrecip').prop('checked', false)
+            $('#rdoImperialPrecip')
+                .prop('checked', false)
                 .checkboxradio('refresh');
         }
     };

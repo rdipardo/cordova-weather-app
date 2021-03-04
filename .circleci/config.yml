@@ -5,6 +5,9 @@ workflows:
       - build:
           context:
             - docker-hub-creds
+          filters:
+            branches:
+              ignore: /gh-pages/
 jobs:
     build:
         docker:

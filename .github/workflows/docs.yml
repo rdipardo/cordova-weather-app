@@ -10,12 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up node env
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: '12.x'
 
       - name: Cache modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         id: restore-cache
         with:
           path: ~/.npm

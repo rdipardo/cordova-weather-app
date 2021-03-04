@@ -20,7 +20,6 @@
     "opts": {
         "template": "node_modules/clean-jsdoc",
         "theme_opts": {
-            "theme": "dark",
             "langNames": false,
             "project": {
                 "title": "Cordova Weather App",
@@ -34,6 +33,11 @@
               {
                 "name": "description",
                 "content": "A simple weather feed generator for Android"
+              }
+            ],
+            "add_assets": [{
+                "href": "https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/www/favicon.ico",
+                "type": "image/x-icon"
               }
             ],
             "create_style": ".readme table th {border: 0; padding: 0;}"
