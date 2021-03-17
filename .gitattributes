@@ -1,0 +1,4 @@
+platforms/** linguist-vendored
+plugins/** linguist-vendored
+www/js/lib/** linguist-vendored
+www/css/lib/** linguist-vendored
