@@ -40,8 +40,8 @@ jobs:
                 curl -s "https://get.sdkman.io" | bash
                 source "$HOME/.sdkman/bin/sdkman-init.sh"
                 sdk version
-                sdk install java 8.0.275.open-adpt
-                sdk install gradle 6.5
+                sdk install java 8.0.282-open
+                sdk install gradle 6.6
                 java -version
                 echo "const ENV = {'OPENWEATHER_APPID':'${OPENWEATHER_APPID}'}" > ./www/config.js
                 npm run build
