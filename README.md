@@ -33,8 +33,20 @@ The `JAVA_HOME` path *should not include* the `bin` folder!
 
 ##### Windows
 
-- From the Control Panel, select **System and Security** > **System** > **Advanced system settings**
-- Click the **Environment Variables** button
+*Version 10.0.19042.x (20H2) or later*
+
+1. Press <kbd>&#8862;</kbd> (Windows key) + <kbd>X</kbd>
+2. Click **System**, or type <kbd>Y</kbd>
+3. Select **Advanced system settings** from the menu on the far right
+
+*Older versions*
+
+1. Press <kbd>&#8862;</kbd> + <kbd>Pause/Break</kbd>
+2. From the Control Panel, select **System and Security** > **System** > **Advanced system settings**
+
+*All versions*
+
+- When the *System Properties* dialog appears, click the **Environment Variables** button
 - In the **System variables** dialog box, click **New...**
 - In the **Variable name** text field, type `JAVA_HOME`
 - In the **Variable value** text field, type the full path to your installed JDK, e.g. `C:\full\path\to\your\JDK`
@@ -155,8 +167,8 @@ Portions of this work are licensed under a [Creative Commons Attribution-ShareAl
 [passing build options]: https://cordova.apache.org/docs/en/latest/guide/platforms/android/#configuring-gradle
 [cci-status]: https://circleci.com/gh/rdipardo/cordova-weather-app
 [cci-status-badge]: https://circleci.com/gh/rdipardo/cordova-weather-app.svg?style=svg
-[bs-status]: https://app-automate.browserstack.com/dashboard/v2/builds/401dd049668eb908545b1c6ff845abecbfb33538
-[bs-status-badge]: https://app-automate.browserstack.com/badge.svg?badge_key=ZjZJTTlKZCtrOEUweXBqTlR2THpDNkhZTXc4R3phdW9IbnRoOVA4WkpYOD0tLU00VjFSZEIxOGRKTXB6alR0TURkK1E9PQ==--4c44450eca889dc5b5905421dcf98e2197a07690
+[bs-status]: https://app-automate.browserstack.com/dashboard/v2/builds/36453f4e5d4c104af774016801d1f696b4c00df3
+[bs-status-badge]: https://app-automate.browserstack.com/badge.svg?badge_key=ZDhwTlU4Qi9VTGRycGIvNGJiQ1Z4Sm9tMVJ4ZnJES0tPcDE5U1V1b3pVbz0tLWJTaFQ5bjdHdmxycVYwQkRycUtVVUE9PQ==--36fff605625525b29bc5b856f6b81e851dacb00b
 [API Docs]: https://github.com/rdipardo/cordova-weather-app/workflows/API%20Docs/badge.svg?branch=main
 [API Docs Workflow]: https://github.com/rdipardo/cordova-weather-app/actions?query=workflow%3AAPI%20Docs
 [WeatherWizard-daily-screen]: https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/.github/img/daily_city_search.jpg

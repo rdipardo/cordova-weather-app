@@ -40,7 +40,7 @@
                 "type": "image/x-icon"
               }
             ],
-            "create_style": ".readme table th {border: 0; padding: 0;}"
+            "create_style": ".readme table th {border: 0; padding: 0;} .readme ol {list-style: decimal !important;}"
         },
         "encoding": "utf8",
         "destination": "doc/",
