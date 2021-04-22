@@ -15,18 +15,25 @@ jobs:
           node-version: '12.x'
 
       - name: Cache modules
-        uses: actions/cache@v2.1.4
+        uses: actions/cache@v2.1.5
         id: restore-cache
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-npm-
 
+      - name: Configure npm
+        run: |-
+         echo "//npm.pkg.github.com/:_authToken=\${NPM_AUTH_TOKEN}" > .npmrc
+         echo "@rdipardo:registry=https://npm.pkg.github.com" >> .npmrc
+
       - name: Install JSDoc and template assets
-        run: npm install --save-dev jsdoc rdipardo/clean-jsdoc-theme
+        env:
+          NPM_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: npm install --prod --no-save jsdoc @rdipardo/clean-jsdoc
 
       - name: Build docs
-        run: npm run gendocs
+        run: npx jsdoc www/js -c .github/jsdoc/conf.json -t node_modules/@rdipardo/clean-jsdoc
 
       - name: Publish
         uses: peaceiris/actions-gh-pages@v3.8.0

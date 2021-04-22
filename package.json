@@ -3,12 +3,12 @@
     "displayName": "Weather Wizard",
     "version": "1.2.1",
     "description": "A simple weather feed generator for Android",
-    "homepage": "https://heredocs.com/cordova-weather-app/",
+    "homepage": "https://heredocs.io/cordova-weather-app/",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/rdipardo/cordova-weather-app.git"
     },
-    "author": "Robert Di Pardo <dipardo.r@gmail.com> (https://heredocs.com/)",
+    "author": "Robert Di Pardo <dipardo.r@gmail.com> (https://heredocs.io)",
     "license": "Apache-2.0",
     "keywords": [
         "ecosystem:cordova"
