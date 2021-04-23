@@ -21,6 +21,7 @@
         "template": "node_modules/clean-jsdoc",
         "theme_opts": {
             "langNames": false,
+            "theme": "dark",
             "project": {
                 "title": "Cordova Weather App",
                 "version": "1.2.1",
@@ -35,12 +36,12 @@
                 "content": "A simple weather feed generator for Android"
               }
             ],
-            "add_assets": [{
+            "remote_assets": [{
                 "href": "https://raw.githubusercontent.com/rdipardo/cordova-weather-app/main/www/favicon.ico",
                 "type": "image/x-icon"
               }
             ],
-            "create_style": ".readme table th {border: 0; padding: 0;}"
+            "inline_style": ".readme table th {border: 0; padding: 0;}"
         },
         "encoding": "utf8",
         "destination": "doc/",

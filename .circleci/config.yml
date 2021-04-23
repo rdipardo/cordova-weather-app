@@ -14,7 +14,7 @@ jobs:
           - image: circleci/android:api-29-node
             auth:
               username: $DOCKERHUB_USER
-              password: $DOCKERHUB_PASSWORD          
+              password: $DOCKERHUB_PASSWORD
         environment:
           JVM_OPTS: -Xmx3200m
         steps:
@@ -40,7 +40,7 @@ jobs:
                 curl -s "https://get.sdkman.io" | bash
                 source "$HOME/.sdkman/bin/sdkman-init.sh"
                 sdk version
-                sdk install java 8.0.282-open
+                sdk install java 8.0.292-open
                 sdk install gradle 6.6
                 java -version
                 echo "const ENV = {'OPENWEATHER_APPID':'${OPENWEATHER_APPID}'}" > ./www/config.js

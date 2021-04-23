@@ -27,13 +27,12 @@ jobs:
          echo "//npm.pkg.github.com/:_authToken=\${NPM_AUTH_TOKEN}" > .npmrc
          echo "@rdipardo:registry=https://npm.pkg.github.com" >> .npmrc
 
-      - name: Install JSDoc and template assets
+      - name: Build docs
         env:
           NPM_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        run: npm install --prod --no-save jsdoc @rdipardo/clean-jsdoc
-
-      - name: Build docs
-        run: npx jsdoc www/js -c .github/jsdoc/conf.json -t node_modules/@rdipardo/clean-jsdoc
+        run: |-
+         npm install --prod --no-save jsdoc @rdipardo/clean-jsdoc
+         npx jsdoc www/js -c .github/jsdoc/conf.json -t node_modules/@rdipardo/clean-jsdoc
 
       - name: Publish
         uses: peaceiris/actions-gh-pages@v3.8.0
