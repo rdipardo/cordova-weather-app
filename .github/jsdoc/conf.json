@@ -18,7 +18,7 @@
         "monospaceLinks": false
     },
     "opts": {
-        "template": "node_modules/clean-jsdoc",
+        "template": "node_modules/@rdipardo/clean-jsdoc",
         "theme_opts": {
             "langNames": false,
             "theme": "dark",

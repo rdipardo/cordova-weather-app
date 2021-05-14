@@ -42,10 +42,10 @@
         ]
     },
     "devDependencies": {
+        "@rdipardo/clean-jsdoc": "github:rdipardo/clean-jsdoc-theme",
         "@wdio/cli": "^6.11.3",
         "@wdio/jasmine-framework": "^6.11.0",
         "@wdio/local-runner": "^6.11.3",
-        "clean-jsdoc": "github:rdipardo/clean-jsdoc-theme",
         "cordova": "github:apache/cordova-cli",
         "cordova-plugin-proguard": "^2.2.0",
         "dotenv": "^8.2.0",
